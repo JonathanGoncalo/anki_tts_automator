@@ -56,7 +56,7 @@ O `.env` fica só no seu computador e não é enviado ao GitHub.
 ## Uso
 
 ```bash
-node gerador-de-audios.js
+node "Anki TTS Automator.js"
 ```
 
 O programa pede o caminho da pasta com os TXT, mostra a lista de arquivos, e você escolhe o número e confirma. Os áudios são criados em uma pasta com o nome do TXT:
@@ -67,7 +67,28 @@ nome-do-arquivo/
 └── Mining/   (áudios das palavras)
 ```
 
-Depois, copie os MP3 para a pasta de mídia do Anki (`collection.media`) para que os cards encontrem os áudios.
+## Como importar os áudios para o Anki
+
+Após a geração, os arquivos MP3 estarão organizados em duas pastas:
+
+- `Frases`: áudios das frases completas.
+- `Mining`: áudios das palavras isoladas.
+
+Para utilizar os áudios nos cards:
+
+1. Abra o Anki e acesse **Ferramentas → Verificar mídia** para localizar a pasta de mídia da sua coleção, se necessário.
+2. Feche o Anki antes de copiar os arquivos.
+3. Copie os arquivos MP3 das pastas `Frases` e `Mining` para a pasta `collection.media` da sua coleção.
+4. Abra o Anki novamente e sincronize, se necessário.
+
+**Importante:** os nomes dos arquivos devem permanecer exatamente iguais aos informados nos campos `audio` e `word_audio` do TXT.
+
+O Anki utiliza a seguinte sintaxe nos campos dos cards:
+
+- Áudio da frase: `[sound:NomeDaFrase.mp3]`
+- Áudio da palavra: `[sound:NomeDaPalavra_Mining.mp3]`
+
+Assim, os cards conseguem localizar e reproduzir os respectivos áudios.
 
 ## Configurações no código
 
